@@ -4,7 +4,7 @@ import type { ApiError } from '../../../core/api/generated';
 
 export const load = (async ({ locals, params }) => {
 	try {
-		var response = await locals.api.client.user.getApiUser1(params.username as string);
+		var response = await locals.api.client.user.getApiUserProfile(params.username as string);
 
 		return {
 			profile: response,
@@ -22,3 +22,4 @@ export const load = (async ({ locals, params }) => {
 		}
 	}
 }) satisfies PageServerLoad;
+

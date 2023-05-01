@@ -2,7 +2,7 @@ nav {
 	background: var(--primary);
 }
 
-nav * {
+.main-nav * {
 	color: #fffcf0;
 }
 
@@ -17,6 +17,11 @@ h4,
 h5 {
 	--typography-spacing-vertical: 1em;
 }
+
+.breadcrumbs {
+	background: none;
+}
+
 
 .login-error {
 	color: #d9534f ;

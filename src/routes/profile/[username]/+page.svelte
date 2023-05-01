@@ -19,13 +19,19 @@
 			<div>
 				<h1>Profile of {profile.data?.username}</h1>
 			</div>
-            <div>
-				<button type="submit" >Send message</button>
+			<div>
+				<button type="submit">Send message</button>
 			</div>
 		{/if}
 	</div>
 
-	<p>Description of user goes here</p>
+	{#if profile.data?.description}
+		<p>{profile.data?.description}</p>
+	{:else if isYourProfile}
+		<p><i>You have not yet written a presentation. Get to it!</i></p>
+	{:else}
+		<p><i>User {profile.data?.username} has not yet written a presentation.</i></p>
+	{/if}
 {:else}
 	<h1>{data.error}</h1>
 {/if}

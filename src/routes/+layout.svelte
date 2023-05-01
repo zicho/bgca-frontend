@@ -6,7 +6,7 @@
 	export let data: LayoutData;
 </script>
 
-<nav class="container-fluid">
+<nav class="container-fluid main-nav">
 	<ul>
 		<li><a href="/"><strong>BGCA</strong></a></li>
 	</ul>
