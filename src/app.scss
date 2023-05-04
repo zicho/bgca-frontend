@@ -6,6 +6,14 @@ nav {
 	color: #fffcf0;
 }
 
+.m-0 * {
+	margin: 0 !important;	
+}
+
+.m-0 {
+	margin: 0 !important;	
+}
+
 main {
 	padding-top: calc(var(--spacing) * 1.5) !important;
 }
@@ -22,8 +30,12 @@ h5 {
 	background: none;
 }
 
+.login-error-label {
+	color: #d9534f;
+	float: right;
+}
 
-.login-error {
+.login-error-message {
 	color: #d9534f ;
 	display: table;
 	margin: 0 auto;

@@ -25,13 +25,16 @@
 		{/if}
 	</div>
 
-	{#if profile.data?.description}
-		<p>{profile.data?.description}</p>
-	{:else if isYourProfile}
-		<p><i>You have not yet written a presentation. Get to it!</i></p>
-	{:else}
-		<p><i>User {profile.data?.username} has not yet written a presentation.</i></p>
-	{/if}
+	<div>
+		<h3>Description</h3>
+		{#if profile.data?.description}
+			<p>{profile.data?.description}</p>
+		{:else if isYourProfile}
+			<p><i>You have not yet written a presentation. Get to it!</i></p>
+		{:else}
+			<p><i>User {profile.data?.username} has not yet written a presentation.</i></p>
+		{/if}
+	</div>
 {:else}
 	<h1>{data.error}</h1>
 {/if}

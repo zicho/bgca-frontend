@@ -10,13 +10,7 @@
 	let form: ActionData;
 </script>
 
-<nav class="breadcrumbs" aria-label="breadcrumb">
-	<ul>
-		<li><a href="/home">Home</a></li>
-		<li><a href="/profile/{data.username}">Profile</a></li>
-		<li>Edit</li>
-	</ul>
-</nav>
+
 
 <div>
 	<hgroup>

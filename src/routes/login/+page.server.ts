@@ -1,40 +1,49 @@
 import type { ApiError } from '../../core/api/generated';
+import { loginSchema } from '../../core/validationSchemas/loginSchema';
+import { superValidate } from 'sveltekit-superforms/server';
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 
-export const load = (async () => {
-	return {};
+export const load = (async (event) => {
+	const form_data = await superValidate(event, loginSchema);
+	return {
+		form_data
+	};
 }) satisfies PageServerLoad;
 
 /** @type {import('./$types').Actions} */
 export const actions: import('./$types').Actions = {
-	default: async ({ cookies, request, locals }) => {
-		const form = await request.formData();
-		const username = form.get('username') as string;
-		const password = form.get('password') as string;
+	default: async (event) => {
+		const form_data = await superValidate(event, loginSchema);
 
-		try {
-			var response = await locals.api.client.user.postApiUserLogin({
-				username: username,
-				password: password
-			});
+		console.log("opiio")
 
-			if (response.success) {
-				cookies.set('jwt', response.data as string);
-			} else
+		if (form_data.valid) {
+			try {
+				var response = await event.locals.api.client.user.postApiUserLogin({
+					username: form_data.data.username,
+					password: form_data.data.password
+				});
+
+				if (response.success) {
+					event.cookies.set('jwt', response.data as string);
+				}
+			} catch (error) {
+				let response = (error as ApiError).body;
+
 				return {
 					response,
-					username,
-					password
+					form_data,
+					apiError: true
 				};
-		} catch (error) {
-			return {
-				response: (error as ApiError).body,
-				username,
-				password
-			};
-		}  
+			}
 
-		throw redirect(301, '/home');
+			throw redirect(301, '/home');
+		} else {
+			return {
+				form_data,
+				response: undefined
+			};
+		}
 	}
 };
