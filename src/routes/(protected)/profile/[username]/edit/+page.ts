@@ -1,6 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import type { ApiError } from '../../../../core/api/generated';
 
 export const load = (async ({ parent, params }) => {
 	const { api, username } = await parent();

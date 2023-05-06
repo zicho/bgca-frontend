@@ -1,4 +1,3 @@
-import { ApiHelper } from '../../core/api/apiHelper';
 import type { PageLoad } from './$types';
 
 export const load = (async (event) => {

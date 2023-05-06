@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import type { ApiError } from '../../../core/api/generated';
 import type { PageLoad } from './$types';
+import type { ApiError } from '../../../../core/api/generated';
 
 export const load = (async ({ parent, params }) => {
 	const { api, username } = await parent();
@@ -22,7 +22,6 @@ export const load = (async ({ parent, params }) => {
 				error: `User ${params.username} does not seem to exist :(`
 			};
 		} else {
-            console.log("error")
 			throw error(500);
 		}
 	}

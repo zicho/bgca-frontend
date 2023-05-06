@@ -1,9 +1,9 @@
-import { redirect } from '@sveltejs/kit';
-import type { ApiError } from '../../core/api/generated';
-import type { PageServerLoad } from './$types';
-import { ErrorMessages } from '../../core/constants/messages/ErrorMessages';
-import { registerSchema } from '../../core/validationSchemas/registerSchema';
 import { superValidate } from 'sveltekit-superforms/server';
+import type { PageServerLoad } from './$types';
+import { registerSchema } from '../../../core/validationSchemas/registerSchema';
+import { ErrorMessages } from '../../../core/constants/messages/ErrorMessages';
+import type { ApiError } from '../../../core/api/generated';
+import { redirect } from '@sveltejs/kit';
 
 export const load = (async (event) => {
 	const form_data = await superValidate(event, registerSchema);

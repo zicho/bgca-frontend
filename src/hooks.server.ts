@@ -4,7 +4,7 @@ import { ApiHelper } from './core/api/apiHelper';
 import type { UserViewModel } from './core/api/generated';
 
 // anyone can visit these
-let publicRoutes: string[] = ['/contact', '/about', '/guidelines', '/'];
+let publicRoutes: string[] = ['/guidelines', '/rules', '/about', '/'];
 
 // only non authed users can visit these
 let nonAuthRoutes: string[] = ['/login', '/register'];
@@ -12,12 +12,12 @@ let nonAuthRoutes: string[] = ['/login', '/register'];
 export const handle: Handle = async ({ event, resolve }) => {
 	const jwt = event.cookies.get('jwt') as string;
 
-	event.locals.api = new ApiHelper(jwt)
+	event.locals.api = new ApiHelper(jwt);
 
 	if (jwt) {
 		event.locals.jwt = jwt;
 		event.locals.user = decodeUserInfo(jwt);
-		
+
 		if (nonAuthRoutes.includes(event.url.pathname)) {
 			throw redirect(303, '/home');
 		}

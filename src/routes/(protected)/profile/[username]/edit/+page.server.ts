@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import type { ApiError } from '../../../../core/api/generated';
-
+import type { ApiError } from '../../../../../core/api/generated';
 
 /** @type {import('./$types').Actions} */
 export const actions: import('./$types').Actions = {

@@ -49,7 +49,7 @@
 	</ul>
 </nav>
 
-{#if data.jwt}
+{#if data.jwt && path.length > 1}
 	<nav class="container-fluid breadcrumbs" aria-label="breadcrumb">
 		<ul>
 			{#each path as p}

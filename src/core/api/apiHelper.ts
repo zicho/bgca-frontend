@@ -11,7 +11,8 @@ export class ApiHelper {
 			HEADERS: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${jwt}`
-			}
+			},
+			
 		});
 	}
 }

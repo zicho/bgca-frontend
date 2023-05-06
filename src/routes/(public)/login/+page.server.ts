@@ -1,9 +1,9 @@
-import type { ApiError } from '../../core/api/generated';
-import { ErrorMessages } from '../../core/constants/messages/ErrorMessages';
-import { loginSchema } from '../../core/validationSchemas/loginSchema';
+import type { ApiError } from '../../../core/api/generated';
+import { ErrorMessages } from '../../../core/constants/messages/ErrorMessages';
+import { loginSchema } from '../../../core/validationSchemas/loginSchema';
 import { superValidate } from 'sveltekit-superforms/server';
-import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
 export const load = (async (event) => {
 	const form_data = await superValidate(event, loginSchema);
@@ -30,6 +30,8 @@ export const actions: import('./$types').Actions = {
 			} catch (error) {
 	
 				let message = (error as ApiError)?.body?.message;
+
+				console.dir(error)
 
 				return {
 					message: message ? message : ErrorMessages.SERVICE_UNAVAILABLE,
