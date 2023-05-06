@@ -15,10 +15,7 @@
 				<h1>Sign in</h1>
 				<h2>Enter your credentials below</h2>
 			</hgroup>
-			<form
-				use:enhance
-				method="post"
-			>
+			<form use:enhance method="post">
 				<label for="username"
 					>Username{#if $errors.username}
 						<small class="login-error-label">{$errors.username}</small>
@@ -29,9 +26,9 @@
 					type="text"
 					placeholder="Username"
 					aria-label="Username"
-					required
 					bind:value={$form_data.username}
 					{...$constraints.username}
+					required
 				/>
 				<label for="password"
 					>Password {#if $errors.password}<small class="login-error-label">{$errors.password}</small
@@ -42,13 +39,13 @@
 					type="password"
 					placeholder="Password"
 					aria-label="Password"
-					required
 					bind:value={$form_data.password}
 					{...$constraints.password}
+					required
 				/>
 
 				<button type="submit">Login</button>
-				{#if form?.apiError}<span class="login-error-message">{form?.response.message}</span>
+				{#if form?.apiError}<span class="login-error-message">{form?.message}</span>
 				{/if}
 			</form>
 		</div>

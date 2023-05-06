@@ -1,42 +1,43 @@
 import { redirect } from '@sveltejs/kit';
 import type { ApiError } from '../../core/api/generated';
 import type { PageServerLoad } from './$types';
+import { ErrorMessages } from '../../core/constants/messages/ErrorMessages';
+import { registerSchema } from '../../core/validationSchemas/registerSchema';
+import { superValidate } from 'sveltekit-superforms/server';
 
-export const load = (async () => {
-	return {};
+export const load = (async (event) => {
+	const form_data = await superValidate(event, registerSchema);
+	return {
+		form_data
+	};
 }) satisfies PageServerLoad;
 
 /** @type {import('./$types').Actions} */
 export const actions: import('./$types').Actions = {
-	default: async ({ cookies, request, locals }) => {
-		const form = await request.formData();
-		const username = form.get('username') as string;
-		const password = form.get('password') as string;
-        const confirm_password = form.get('confirm_password') as string;
+	default: async (event) => {
+		const form_data = await superValidate(event, registerSchema);
+		if (form_data.valid) {
+			try {
+				var response = await event.locals.api.client.user.postApiUserRegister({
+					username: form_data.data.username,
+					password: form_data.data.password,
+					confirmPassword: form_data.data.confirm_password
+				});
 
-		try {
-			var response = await locals.api.client.user.postApiUserRegister({
-				username: username,
-				password: password,
-                confirmPassword: confirm_password
-			});
+				if (response.success) {
+					event.cookies.set('jwt', response.data as string);
+				}
+			} catch (error) {
+				let message = (error as ApiError)?.body?.message;
 
-			if (response.success) {
-				cookies.set('jwt', response.data as string);
-			} else
 				return {
-					response,
-					username,
-					password
+					message: message ? message : ErrorMessages.SERVICE_UNAVAILABLE,
+					form_data,
+					apiError: true
 				};
-		} catch (error) {
-			return {
-				response: (error as ApiError).body,
-				username,
-				password
-			};
-		}  
+			}
 
-		throw redirect(301, '/home');
+			throw redirect(301, '/home');
+		} else return { form_data };
 	}
 };

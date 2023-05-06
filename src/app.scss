@@ -1,4 +1,33 @@
-nav {
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+
+    height:auto; // Replace with the height your footer should be
+    width: 100%; // Don't change
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+}   
+
+.footer_contents {
+	
+    height:24px; // Replace with the height your footer should be
+    width: 1000px; // Visible width of footer
+    margin:auto;
+
+}
+
+
+
+nav.main-nav {
 	background: var(--primary);
 }
 
@@ -7,11 +36,11 @@ nav {
 }
 
 .m-0 * {
-	margin: 0 !important;	
+	margin: 0 !important;
 }
 
 .m-0 {
-	margin: 0 !important;	
+	margin: 0 !important;
 }
 
 main {
@@ -36,7 +65,7 @@ h5 {
 }
 
 .login-error-message {
-	color: #d9534f ;
+	color: #d9534f;
 	display: table;
 	margin: 0 auto;
 }

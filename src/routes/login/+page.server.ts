@@ -1,4 +1,5 @@
 import type { ApiError } from '../../core/api/generated';
+import { ErrorMessages } from '../../core/constants/messages/ErrorMessages';
 import { loginSchema } from '../../core/validationSchemas/loginSchema';
 import { superValidate } from 'sveltekit-superforms/server';
 import type { PageServerLoad } from './$types';
@@ -16,8 +17,6 @@ export const actions: import('./$types').Actions = {
 	default: async (event) => {
 		const form_data = await superValidate(event, loginSchema);
 
-		console.log("opiio")
-
 		if (form_data.valid) {
 			try {
 				var response = await event.locals.api.client.user.postApiUserLogin({
@@ -29,10 +28,11 @@ export const actions: import('./$types').Actions = {
 					event.cookies.set('jwt', response.data as string);
 				}
 			} catch (error) {
-				let response = (error as ApiError).body;
+	
+				let message = (error as ApiError)?.body?.message;
 
 				return {
-					response,
+					message: message ? message : ErrorMessages.SERVICE_UNAVAILABLE,
 					form_data,
 					apiError: true
 				};
@@ -41,8 +41,7 @@ export const actions: import('./$types').Actions = {
 			throw redirect(301, '/home');
 		} else {
 			return {
-				form_data,
-				response: undefined
+				form_data
 			};
 		}
 	}

@@ -63,3 +63,11 @@
 <main class="container">
 	<slot />
 </main>
+
+<nav dir="rtl" class="container-fluid footer">
+	<ul>
+		<li><a href="/about">About</a></li>
+		<li><a href="/guidelines">Guidelines</a></li>
+		<li><a href="/rules">Rules</a></li>
+	</ul>
+</nav>
