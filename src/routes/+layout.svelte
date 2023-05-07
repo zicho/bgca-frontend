@@ -37,15 +37,15 @@
 		<li><a href="/"><strong>BGCA</strong></a></li>
 	</ul>
 	<ul>
-		{#if data.jwt}
+		<!-- {#if data.jwt} -->
 			<li><a href="/home">Home</a></li>
 			<li><a href="/test">Test</a></li>
 			<li><a href="/profile/{data?.username}">Profile</a></li>
 			<li><a href="/logout">Logout</a></li>
-		{:else}
+		<!-- {:else} -->
 			<li><a href="/login">Login</a></li>
 			<li><a href="/register">Register</a></li>
-		{/if}
+		<!-- {/if} -->
 	</ul>
 </nav>
 

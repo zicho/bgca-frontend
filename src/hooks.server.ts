@@ -3,14 +3,10 @@ import jwt_decode, { type JwtPayload } from 'jwt-decode';
 import { ApiHelper } from './core/api/apiHelper';
 import type { UserViewModel } from './core/api/generated';
 
-// anyone can visit these
-let publicRoutes: string[] = ['/guidelines', '/rules', '/about', '/'];
-
-// only non authed users can visit these
-let nonAuthRoutes: string[] = ['/login', '/register'];
-
 export const handle: Handle = async ({ event, resolve }) => {
 	const jwt = event.cookies.get('jwt') as string;
+
+	const route = event.route.id;
 
 	event.locals.api = new ApiHelper(jwt);
 
@@ -18,14 +14,17 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.jwt = jwt;
 		event.locals.user = decodeUserInfo(jwt);
 
-		if (nonAuthRoutes.includes(event.url.pathname)) {
+		if(route?.includes('(non_authed')) {
 			throw redirect(303, '/home');
 		}
 	} else {
-		if (!publicRoutes.concat(nonAuthRoutes).flat().includes(event.url.pathname)) {
+
+		if(route?.includes('(protected')) {
 			throw redirect(303, '/login');
 		}
 	}
+
+	console.log("response")
 
 	const response = await resolve(event);
 	return response;
