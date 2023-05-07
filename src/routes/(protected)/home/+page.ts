@@ -1,9 +1,9 @@
 import type { PageLoad } from './$types';
 
+export const prerender = false;
+
 export const load = (async ({parent}) => {
     
-    console.dir("Home!")
-
     const { api } = await parent();
     var data = await api.client.user.getAsync()
 
