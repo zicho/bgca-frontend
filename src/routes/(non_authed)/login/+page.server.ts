@@ -28,11 +28,7 @@ export const actions: import('./$types').Actions = {
 					event.cookies.set('jwt', response.data as string);
 				}
 			} catch (error) {
-	
 				let message = (error as ApiError)?.body?.message;
-
-				console.dir(error)
-
 				return {
 					message: message ? message : ErrorMessages.SERVICE_UNAVAILABLE,
 					form_data,
@@ -40,7 +36,13 @@ export const actions: import('./$types').Actions = {
 				};
 			}
 
-			throw redirect(301, '/home');
+			const redirectTo = event.url.searchParams.get('redirectTo');
+
+			if(redirectTo) {
+				throw redirect(302, `/${redirectTo.slice(1)}`);
+			} else {
+				throw redirect(302, "/home");
+			}
 		} else {
 			return {
 				form_data

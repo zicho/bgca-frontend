@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '@picocss/pico';
+	import '@picocss/pico';
 	import '../app.scss';
 	import { page } from '$app/stores';
 
@@ -37,20 +38,24 @@
 		<li><a href="/"><strong>BGCA</strong></a></li>
 	</ul>
 	<ul>
-		<!-- {#if data.jwt} -->
-			<li><a href="/home">Home</a></li>
-			<li><a href="/test">Test</a></li>
-			<li><a href="/profile/{data?.username}">Profile</a></li>
-			<li><a href="/logout">Logout</a></li>
-		<!-- {:else} -->
-			<li><a href="/login">Login</a></li>
-			<li><a href="/register">Register</a></li>
-		<!-- {/if} -->
+		{#if data.jwt}
+			<li><i class="fa fa-home button-icon-standard" /><a href="/home">Home</a></li>
+			<li>
+				<i class="fa fa-user button-icon-standard" /><a href="/profile/{data?.username}">Profile</a>
+			</li>
+			<li>
+				<i class="fa fa-envelope button-icon-standard" /><a href="/inbox/{data?.username}">Inbox</a>
+			</li>
+			<li><i class="fa fa-sign-out button-icon-standard" /><a href="/logout">Logout</a></li>
+		{:else}
+			<li><i class="fa fa-sign-in button-icon-standard" /><a href="/login">Login</a></li>
+			<li><i class="fa fa-user-plus button-icon-standard" /><a href="/register">Register</a></li>
+		{/if}
 	</ul>
 </nav>
 
 {#if data.jwt && path.length > 1}
-	<nav class="container-fluid breadcrumbs" aria-label="breadcrumb">
+	<nav class="container-fluid" aria-label="breadcrumb">
 		<ul>
 			{#each path as p}
 				<li><a href={p.href}>{p.label}</a></li>

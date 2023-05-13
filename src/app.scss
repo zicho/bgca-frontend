@@ -1,31 +1,39 @@
-body{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+@media (max-width: 576px) {
+	li i {
+		display: none !important;
+	}
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .footer {
-
-    height:auto; // Replace with the height your footer should be
-    width: 100%; // Don't change
-    background-image: none;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-position: 0% 0%;
-    position: fixed;
-    bottom: 0pt;
-    left: 0pt;
-}   
-
-.footer_contents {
-	
-    height:24px; // Replace with the height your footer should be
-    width: 1000px; // Visible width of footer
-    margin:auto;
-
+	height: auto; // Replace with the height your footer should be
+	width: 100%; // Don't change
+	background-image: none;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0% 0%;
+	position: fixed;
+	bottom: 0pt;
+	left: 0pt;
 }
 
+.footer_contents {
+	height: 24px; // Replace with the height your footer should be
+	width: 1000px; // Visible width of footer
+	margin: auto;
+}
 
+.button-icon-standard {
+	display: inline-flex;
+	vertical-align: middle;
+	margin-bottom: 4px;
+	margin-right: 12px;
+}
 
 nav.main-nav {
 	background: var(--primary);
@@ -60,12 +68,18 @@ h5 {
 }
 
 .login-error-label {
-	color: #d9534f;
+	color: darkred;
 	float: right;
 }
 
+.login-error-container {
+	margin-top: 20px; 
+	margin-bottom: 50px; 
+	background: LightPink;
+}
+
 .login-error-message {
-	color: #d9534f;
+	color: darkred;
 	display: table;
 	margin: 0 auto;
 }

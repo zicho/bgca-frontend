@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData, ActionData } from './$types';
+	import { page } from '$app/stores';
+	import { ApiError } from '../../../core/api/generated';
 
 	export let data: PageData;
 	export let form: ActionData;
+
+	let message: string;
+	$: message = $page.url.searchParams.get('message') ?? '';
 
 	const { form: form_data, errors, enhance, constraints } = superForm(data.form_data);
 </script>
@@ -45,9 +50,18 @@
 				/>
 
 				<button type="submit">Login</button>
-				{#if form?.apiError}<span class="login-error-message">{form?.message}</span>
-				{/if}
 			</form>
 		</div>
 	</article>
+	{#if form?.apiError || message}
+		<article class="grid login-error-container">
+			<div>
+				{#if message}
+					<span class="login-error-message">{message}</span>
+				{:else if form?.apiError}
+					<span class="login-error-message">{form?.message}</span>
+				{/if}
+			</div>
+		</article>
+	{/if}
 </main>

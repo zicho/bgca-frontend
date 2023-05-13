@@ -2,22 +2,27 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	const { profile, isYourProfile } = data;
 </script>
 
-{#if profile}
+{#if data.profile}
 	<div class="grid">
-		{#if isYourProfile}
+		{#if data.isYourProfile}
 			<div>
 				<h1>Your profile</h1>
 			</div>
 			<div>
-				<a href="{profile.data?.username}/edit" role="button" style="width: 100%">Edit profile</a>
+				<a href="{data.profile.data?.username}/edit" role="button" style="width: 100%"
+					><i class="fa fa-pen button-icon-standard" />Edit profile</a
+				>
+			</div>
+			<div>
+				<a href="{data.profile.data?.username}/inbox" role="button" style="width: 100%"
+					><i class="fa fa-envelope button-icon-standard" />Inbox</a
+				>
 			</div>
 		{:else}
 			<div>
-				<h1>Profile of {profile.data?.username}</h1>
+				<h1>Profile of {data.profile.data?.username}</h1>
 			</div>
 			<div>
 				<button type="submit">Send message</button>
@@ -27,12 +32,12 @@
 
 	<div>
 		<h3>Description</h3>
-		{#if profile.data?.description}
-			<p>{profile.data?.description}</p>
-		{:else if isYourProfile}
+		{#if data.profile.data?.description}
+			<p>{data.profile.data?.description}</p>
+		{:else if data.isYourProfile}
 			<p><i>You have not yet written a presentation. Get to it!</i></p>
 		{:else}
-			<p><i>User {profile.data?.username} has not yet written a presentation.</i></p>
+			<p><i>User {data.profile.data?.username} has not yet written a presentation.</i></p>
 		{/if}
 	</div>
 {:else}

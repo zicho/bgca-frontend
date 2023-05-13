@@ -2,6 +2,8 @@ import { redirect, type Handle, type HandleFetch } from '@sveltejs/kit';
 import jwt_decode, { type JwtPayload } from 'jwt-decode';
 import { ApiHelper } from './core/api/apiHelper';
 import type { UserViewModel } from './core/api/generated';
+import { handleLoginRedirect } from './core/util/handleLoginRedirect';
+import type { RequestEvent } from './routes/$types';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const jwt = event.cookies.get('jwt') as string;
@@ -14,17 +16,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.jwt = jwt;
 		event.locals.user = decodeUserInfo(jwt);
 
-		if(route?.includes('(non_authed')) {
-			throw redirect(303, '/home');
+		if (route?.includes('(non_authed')) {
+			throw redirect(302, '/home');
 		}
 	} else {
-
-		if(route?.includes('(protected')) {
-			throw redirect(303, '/login');
+		if (route?.includes('(protected')) {
+			throw redirect(302, handleLoginRedirect(event as RequestEvent));
 		}
 	}
-
-	console.log("response")
 
 	const response = await resolve(event);
 	return response;
