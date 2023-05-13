@@ -14,7 +14,7 @@
 </script>
 
 <main>
-	<article class="grid">
+	<article>
 		<div>
 			<hgroup>
 				<h1>Sign in</h1>
@@ -53,13 +53,14 @@
 			</form>
 		</div>
 	</article>
+
 	{#if form?.apiError || message}
-		<article class="grid login-error-container">
+		<article class="form-error-container">
 			<div>
 				{#if message}
-					<span class="login-error-message">{message}</span>
+					<span class="form-error-message">{message}</span>
 				{:else if form?.apiError}
-					<span class="login-error-message">{form?.message}</span>
+					<span class="form-error-message">{form?.message}</span>
 				{/if}
 			</div>
 		</article>

@@ -67,19 +67,38 @@ h5 {
 	background: none;
 }
 
-.login-error-label {
+.form-error-label {
 	color: darkred;
 	float: right;
 }
 
-.login-error-container {
-	margin-top: 20px; 
-	margin-bottom: 50px; 
+.form-error-container {
 	background: LightPink;
 }
 
-.login-error-message {
+.form-error-message {
 	color: darkred;
+	display: table;
+	margin: 0 auto;
+}
+
+.form-success-container div {
+	position: relative;
+}
+
+.form-success-container i {
+	position: absolute;
+	top: 25%;
+	left: 100%;
+	cursor: pointer;
+}
+
+.form-success-container {
+	background: LightGreen;
+}
+
+.form-success-message {
+	color: darkgreen;
 	display: table;
 	margin: 0 auto;
 }

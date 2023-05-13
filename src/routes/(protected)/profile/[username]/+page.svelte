@@ -1,8 +1,20 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	let success: boolean;
+	$: success = ($page.url.searchParams.get('success') as unknown as boolean) ?? false;
 </script>
+
+{#if success}
+	<article class="form-success-container">
+		<div>
+			<span class="form-success-message">Profile updated!</span>
+			<a href={data.username}><i class="fa fa-close" /></a>
+		</div>
+	</article>
+{/if}
 
 {#if data.profile}
 	<div class="grid">

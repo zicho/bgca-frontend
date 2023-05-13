@@ -45,7 +45,9 @@
 				/>
 				<label for="confirm_password"
 					>Confirm password
-					{#if $errors.confirm_password}<small class="login-error-label">{$errors.confirm_password}</small>{/if}
+					{#if $errors.confirm_password}<small class="login-error-label"
+							>{$errors.confirm_password}</small
+						>{/if}
 					<!-- Following row shows as an error but works , don't know how to bypass  ¯\_(ツ)_/¯ -->
 					{#if $errors['confirm']}<small class="login-error-label">{$errors['confirm']}</small>{/if}
 				</label>
@@ -59,9 +61,15 @@
 					required
 				/>
 				<button type="submit">Register</button>
-				{#if form?.apiError}<span class="login-error-message">{form?.message}</span>
-				{/if}
 			</form>
 		</div>
 	</article>
+
+	{#if form?.apiError}
+		<article class="form-error-container">
+			<div>
+				<span class="form-error-message">{form?.message}</span>
+			</div>
+		</article>
+	{/if}
 </main>

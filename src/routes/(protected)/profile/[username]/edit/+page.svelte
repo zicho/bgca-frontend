@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { UserProfileViewModel } from '../../../../core/api/generated';
+	import type { UserProfileViewModel } from '../../../../../core/api/generated';
 	import type { PageData, ActionData } from './$types';
 
 	export let data: PageData;
@@ -9,8 +9,6 @@
 	let desc = profile.description;
 	let form: ActionData;
 </script>
-
-
 
 <div>
 	<hgroup>

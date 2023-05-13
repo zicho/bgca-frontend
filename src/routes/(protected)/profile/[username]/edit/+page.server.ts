@@ -3,7 +3,7 @@ import type { ApiError } from '../../../../../core/api/generated';
 
 /** @type {import('./$types').Actions} */
 export const actions: import('./$types').Actions = {
-	default: async ({ cookies, request, locals }) => {
+	default: async ({ request, locals }) => {
 		const form = await request.formData();
 		const description = form.get('description') as string;
 
@@ -26,6 +26,6 @@ export const actions: import('./$types').Actions = {
 			};
 		}
 
-		throw redirect(301, '/profile/');
+		throw redirect(301, `/profile/${locals.user.username}?success=true`);
 	}
 };

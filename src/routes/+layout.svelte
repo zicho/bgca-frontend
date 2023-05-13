@@ -44,7 +44,7 @@
 				<i class="fa fa-user button-icon-standard" /><a href="/profile/{data?.username}">Profile</a>
 			</li>
 			<li>
-				<i class="fa fa-envelope button-icon-standard" /><a href="/inbox/{data?.username}">Inbox</a>
+				<i class="fa fa-envelope button-icon-standard" /><a href="/inbox/{data?.username}">Inbox {#if data.msgCount != 0}<small>({data.msgCount})</small>{/if}</a>
 			</li>
 			<li><i class="fa fa-sign-out button-icon-standard" /><a href="/logout">Logout</a></li>
 		{:else}
