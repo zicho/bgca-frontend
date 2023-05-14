@@ -6,7 +6,7 @@ export const load = (async ({ parent, params }) => {
 	const { api, username } = await parent();
 
 	try {
-		var data = await api.client.user.getApiUserProfile(params.username as string);
+		var data = await api?.client.user.getApiUserProfile(params.username as string);
 
 		return {
 			profile: data,
