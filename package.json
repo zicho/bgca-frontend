@@ -14,7 +14,8 @@
 		"format": "prettier --plugin-search-dir . --write .",
 		"remember-disclaimer": "node -e \"console.log('Remember to use the latest swagger.json when updating client!')\"",
 		"done-generating": "node -e \"console.log('Client generated!')\"",
-		"generate": "npm run remember-disclaimer && npx openapi --input swagger.json --output ./src/core/api/generated --name AppClient --client axios && npm run done-generating"
+		"generate": "npm run remember-disclaimer && npx openapi --input swagger.json --output ./src/core/api/generated --name AppClient --client axios && npm run done-generating",
+		"vercel-generate": "npm run remember-disclaimer && npx openapi --input https://bgca-api.azurewebsites.net/swagger/v1/swagger.json --output ./src/core/api/generated --name AppClient --client axios && npm run done-generating"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
