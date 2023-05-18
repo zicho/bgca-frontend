@@ -16,11 +16,9 @@ export const load = (async ({ parent, params, url }) => {
 		throw error(500, "Limit exceeds 50");
 	}
 
-	console.dir(pageNumber)
-
 	try {
 		var messages = await api.client.privateMessage.getPrivateMessagesForUserAsync(
-			params.username as string,
+			username as string,
 			limit,
 			pageNumber
 		);

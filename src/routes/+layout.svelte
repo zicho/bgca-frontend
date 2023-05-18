@@ -41,6 +41,9 @@
 		{#if data.jwt}
 			<li><i class="fa fa-home button-icon-standard" /><a href="/home">Home</a></li>
 			<li>
+				<i class="fa fa-dice button-icon-standard" /><a href="/games">Games</a>
+			</li>
+			<li>
 				<i class="fa fa-user button-icon-standard" /><a href="/profile/{data?.username}">Profile</a>
 			</li>
 			<li>
