@@ -1,13 +1,14 @@
 import type { GameViewModel } from '../../../core/api/generated';
 import type { PageLoad } from './$types';
 
-export const load = (async ({parent}) => {
-    
-    const { api } = await parent();
+export const load = (async ({ parent, url }) => {
+	const { api } = await parent();
 
-    var data = await api?.client.game.getGames()
+	let query = url.searchParams.get('search');
 
-    return {
-        games: data?.data as GameViewModel[]
-    };
+	var data = await api?.client.game.getGames(query ? query : undefined);
+
+	return {
+		games: data?.data as GameViewModel[]
+	};
 }) satisfies PageLoad;
