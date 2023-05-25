@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
-import { ApiHelper } from '../core/api/apiHelper';
 import type { LayoutLoad, RequestEvent } from './$types';
-import { handleLoginRedirect } from '../core/util/handleLoginRedirect';
+import { ApiHelper } from '$lib/api/apiHelper';
+import { handleLoginRedirect } from '$lib/util/handleLoginRedirect';
 
 export const load = (async (event) => {
 	if (event?.route?.id?.includes('(protected)') && !event.data.jwt) {

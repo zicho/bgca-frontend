@@ -1,9 +1,9 @@
 import { redirect, type Handle, type HandleFetch } from '@sveltejs/kit';
 import jwt_decode, { type JwtPayload } from 'jwt-decode';
-import { ApiHelper } from './core/api/apiHelper';
-import type { UserViewModel } from './core/api/generated';
-import { handleLoginRedirect } from './core/util/handleLoginRedirect';
 import type { RequestEvent } from './routes/$types';
+import { ApiHelper } from '$lib/api/apiHelper';
+import { handleLoginRedirect } from '$lib/util/handleLoginRedirect';
+import type { UserViewModel } from '$lib/api/generated';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const jwt = event.cookies.get('jwt') as string;

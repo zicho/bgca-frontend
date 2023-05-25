@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { UserViewModel } from '../../../core/api/generated';
+	import type { UserViewModel } from '$lib/api/generated';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

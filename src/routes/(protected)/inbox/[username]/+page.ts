@@ -1,6 +1,6 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import type { PrivateMessageViewModel } from '../../../../core/api/generated';
+import type { PrivateMessageViewModel } from '$lib/api/generated';
 
 export const load = (async ({ parent, params, url }) => {
 	const { api, username } = await parent();
@@ -17,17 +17,17 @@ export const load = (async ({ parent, params, url }) => {
 	}
 
 	try {
-		var messages = await api.client.privateMessage.getPrivateMessagesForUserAsync(
+		var messages = await api?.client.privateMessage.getPrivateMessagesForUserAsync(
 			username as string,
 			limit,
 			pageNumber
 		);
 
-		const msgCount = (await api.client.privateMessage.getPrivateMessageCountForUserAsync(params.username as string)).data as number;
+		const msgCount = (await api?.client.privateMessage.getPrivateMessageCountForUserAsync(params.username as string))?.data as number;
 		const totalPages = Math.ceil(msgCount / limit);
 
 		return {
-			messages: messages.data as PrivateMessageViewModel[],
+			messages: messages?.data as PrivateMessageViewModel[],
 			msgCount,
 			pageNumber,
 			limit,

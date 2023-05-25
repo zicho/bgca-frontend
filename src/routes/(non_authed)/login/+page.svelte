@@ -2,7 +2,6 @@
 	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData, ActionData } from './$types';
 	import { page } from '$app/stores';
-	import { ApiError } from '../../../core/api/generated';
 
 	export let data: PageData;
 	export let form: ActionData;

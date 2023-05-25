@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import type { ApiError } from '../../../../core/api/generated';
+import type { ApiError } from '$lib/api/generated';
 
 export const load = (async ({ parent, params }) => {
 	const { api, username } = await parent();

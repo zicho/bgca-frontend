@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { PrivateMessageViewModel } from '../../../../core/api/generated';
+	import type { PrivateMessageViewModel } from '$lib/api/generated';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

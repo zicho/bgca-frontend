@@ -1,4 +1,4 @@
-import type { GameViewModel } from '../../../core/api/generated';
+import type { GameViewModel } from '$lib/api/generated';
 import type { PageLoad } from './$types';
 
 export const load = (async ({ parent, url }) => {

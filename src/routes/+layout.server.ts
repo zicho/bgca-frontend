@@ -1,4 +1,3 @@
-import { ApiHelper } from '../core/api/apiHelper';
 import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ locals }) => {

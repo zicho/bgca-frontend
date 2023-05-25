@@ -1,4 +1,4 @@
-import type { RequestEvent } from '../../routes/$types';
+import type { RequestEvent } from "@sveltejs/kit";
 
 export function handleLoginRedirect(
 	event: RequestEvent,

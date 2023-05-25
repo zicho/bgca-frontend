@@ -9,11 +9,11 @@ export const load = (async ({ parent, params }) => {
 	}
 
 	try {
-		var response = await api.client.user.getApiUserProfile(params.username as string);
+		var response = await api?.client.user.getApiUserProfile(params.username as string);
 
 		return {
 			profile: response,
-			isYourProfile: response.data?.username === username
+			isYourProfile: response?.data?.username === username
 		};
 	} catch (e) {
 		throw error(500);
