@@ -4,7 +4,7 @@ import type { PageLoad } from './$types';
 export const load = (async ({ parent, url }) => {
 	const { api } = await parent();
 
-	let query = url.searchParams.get('search');
+	let query = url.searchParams.get('name');
 
 	var data = await api?.client.game.getGames(query ? query : undefined);
 

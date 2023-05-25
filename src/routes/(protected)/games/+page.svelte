@@ -1,50 +1,12 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import TimeoutSearchForm from '../../../core/components/TimeoutSearchForm.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
 	$: ({ games } = data);
-
-	let timer: NodeJS.Timeout | null = null;
-	let searchQuery: string = '';
-
-	function startTimer() {
-		// Clear any existing timer
-		if (timer) {
-			clearTimeout(timer);
-		}
-
-		// Start a new timer
-		timer = setTimeout(() => {
-			// Call your function here
-			runFunction();
-		}, 1000);
-	}
-
-	function resetTimer() {
-		// Clear the current timer and start a new one
-		clearTimeout(timer as NodeJS.Timeout);
-		startTimer();
-	}
-
-	function runFunction() {
-		goto(searchQuery ? `${$page.url.pathname}?search=${searchQuery}` : $page.url.pathname);
-	}
 </script>
 
-<form>
-	<input
-		autofocus
-		bind:value={searchQuery}
-		on:input={resetTimer}
-		name="search"
-		type="text"
-		placeholder="Search"
-		aria-label="Search"
-	/>
-</form>
+<TimeoutSearchForm queryParam="name" />
 
 {#each games as game}
 	<a href="/games/{game.id}/{game.name?.toLocaleLowerCase()}">
