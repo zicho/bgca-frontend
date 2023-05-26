@@ -1,158 +1,165 @@
-@import url("lib/css/pico-bootstrap-grid.min.css");
+// @import url("lib/css/pico-bootstrap-grid.min.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (max-width: 576px) {
-	li i {
-		display: none !important;
-	}
+html, body {
+    height: 100%;
 }
 
-body {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
+// @media (max-width: 576px) {
+// 	li i {
+// 		display: none !important;
+// 	}
+// }
 
-.footer {
-	height: auto; // Replace with the height your footer should be
-	width: 100%; // Don't change
-	background-image: none;
-	background-repeat: repeat;
-	background-attachment: scroll;
-	background-position: 0% 0%;
-	position: fixed;
-	bottom: 0pt;
-	left: 0pt;
-}
+// body {
+// 	min-height: 100vh;
+// 	display: flex;
+// 	flex-direction: column;
+// }
 
-.footer_contents {
-	height: 24px; // Replace with the height your footer should be
-	width: 1000px; // Visible width of footer
-	margin: auto;
-}
+// .footer {
+// 	height: auto; // Replace with the height your footer should be
+// 	width: 100%; // Don't change
+// 	background-image: none;
+// 	background-repeat: repeat;
+// 	background-attachment: scroll;
+// 	background-position: 0% 0%;
+// 	position: fixed;
+// 	bottom: 0pt;
+// 	left: 0pt;
+// }
 
-.button-icon-standard {
-	display: inline-flex;
-	vertical-align: middle;
-	margin-bottom: 4px;
-	margin-right: 12px;
-}
+// .footer_contents {
+// 	height: 24px; // Replace with the height your footer should be
+// 	width: 1000px; // Visible width of footer
+// 	margin: auto;
+// }
 
-nav.main-nav {
-	background: var(--primary);
-}
+// .button-icon-standard {
+// 	display: inline-flex;
+// 	vertical-align: middle;
+// 	margin-bottom: 4px;
+// 	margin-right: 12px;
+// }
 
-.main-nav * {
-	color: #fffcf0;
-}
+// nav.main-nav {
+// 	background: var(--primary);
+// }
 
-.p-0 * {
-	padding: 0 !important;
-}
+// .main-nav * {
+// 	color: #fffcf0;
+// }
 
-.p-0 {
-	padding: 0 !important;
-}
+// .p-0 * {
+// 	padding: 0 !important;
+// }
+
+// .p-0 {
+// 	padding: 0 !important;
+// }
 
 
-.m-0 * {
-	margin: 0 !important;
-}
+// .m-0 * {
+// 	margin: 0 !important;
+// }
 
-.m-0 {
-	margin: 0 !important;
-}
+// .m-0 {
+// 	margin: 0 !important;
+// }
 
-main {
-	padding-top: calc(var(--spacing) * 1.5) !important;
-}
+// main {
+// 	padding-top: calc(var(--spacing) * 1.5) !important;
+// }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-	--typography-spacing-vertical: 1em;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5 {
+// 	--typography-spacing-vertical: 1em;
+// }
 
-.breadcrumbs {
-	background: none;
-}
+// .breadcrumbs {
+// 	background: none;
+// }
 
-.form-error-label {
-	color: darkred;
-	float: right;
-}
+// .form-error-label {
+// 	color: darkred;
+// 	float: right;
+// }
 
-.form-error-container {
-	background: LightPink;
-}
+// .form-error-container {
+// 	background: LightPink;
+// }
 
-.form-error-message {
-	color: darkred;
-	display: table;
-	margin: 0 auto;
-}
+// .form-error-message {
+// 	color: darkred;
+// 	display: table;
+// 	margin: 0 auto;
+// }
 
-.form-success-container div {
-	position: relative;
-}
+// .form-success-container div {
+// 	position: relative;
+// }
 
-.form-success-container i {
-	position: absolute;
-	top: 25%;
-	left: 100%;
-	cursor: pointer;
-}
+// .form-success-container i {
+// 	position: absolute;
+// 	top: 25%;
+// 	left: 100%;
+// 	cursor: pointer;
+// }
 
-.form-success-container {
-	background: LightGreen;
-}
+// .form-success-container {
+// 	background: LightGreen;
+// }
 
-.form-success-message {
-	color: darkgreen;
-	display: table;
-	margin: 0 auto;
-}
+// .form-success-message {
+// 	color: darkgreen;
+// 	display: table;
+// 	margin: 0 auto;
+// }
 
-form {
-	padding: 0;
-	margin: 0;
-}
+// form {
+// 	padding: 0;
+// 	margin: 0;
+// }
 
-/* Green Light scheme (Default) */
-/* Can be forced with data-theme="light" */
-[data-theme='light'],
-:root:not([data-theme='dark']) {
-	--primary: #43a047;
-	--primary-hover: #388e3c;
-	--primary-focus: rgba(67, 160, 71, 0.125);
-	--primary-inverse: #fff;
-}
+// /* Green Light scheme (Default) */
+// /* Can be forced with data-theme="light" */
+// [data-theme='light'],
+// :root:not([data-theme='dark']) {
+// 	--primary: #43a047;
+// 	--primary-hover: #388e3c;
+// 	--primary-focus: rgba(67, 160, 71, 0.125);
+// 	--primary-inverse: #fff;
+// }
 
-/* Green Dark scheme (Auto) */
-/* Automatically enabled if user has Dark mode enabled */
-@media only screen and (prefers-color-scheme: dark) {
-	:root:not([data-theme]) {
-		--primary: #43a047;
-		--primary-hover: #4caf50;
-		--primary-focus: rgba(67, 160, 71, 0.25);
-		--primary-inverse: #fff;
-	}
-}
+// /* Green Dark scheme (Auto) */
+// /* Automatically enabled if user has Dark mode enabled */
+// @media only screen and (prefers-color-scheme: dark) {
+// 	:root:not([data-theme]) {
+// 		--primary: #43a047;
+// 		--primary-hover: #4caf50;
+// 		--primary-focus: rgba(67, 160, 71, 0.25);
+// 		--primary-inverse: #fff;
+// 	}
+// }
 
-/* Green Dark scheme (Forced) */
-/* Enabled if forced with data-theme="dark" */
-[data-theme='dark'] {
-	--primary: #43a047;
-	--primary-hover: #4caf50;
-	--primary-focus: rgba(67, 160, 71, 0.25);
-	--primary-inverse: #fff;
-}
+// /* Green Dark scheme (Forced) */
+// /* Enabled if forced with data-theme="dark" */
+// [data-theme='dark'] {
+// 	--primary: #43a047;
+// 	--primary-hover: #4caf50;
+// 	--primary-focus: rgba(67, 160, 71, 0.25);
+// 	--primary-inverse: #fff;
+// }
 
-/* Green (Common styles) */
-:root {
-	--form-element-active-border-color: var(--primary);
-	--form-element-focus-color: var(--primary-focus);
-	--switch-color: var(--primary-inverse);
-	--switch-checked-background-color: var(--primary);
-}
+// /* Green (Common styles) */
+// :root {
+// 	--form-element-active-border-color: var(--primary);
+// 	--form-element-focus-color: var(--primary-focus);
+// 	--switch-color: var(--primary-inverse);
+// 	--switch-checked-background-color: var(--primary);
+// }

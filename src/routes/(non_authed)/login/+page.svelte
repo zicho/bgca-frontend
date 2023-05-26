@@ -12,56 +12,58 @@
 	const { form: form_data, errors, enhance, constraints } = superForm(data.form_data);
 </script>
 
-<main>
-	<article>
-		<div>
-			<hgroup>
-				<h1>Sign in</h1>
-				<h2>Enter your credentials below</h2>
-			</hgroup>
+<div class="flex flex-col items-center justify-center">
+	<div class="w-full md:w-1/2 xl:w-1/3">
+		<div class="shadow p-8">
+			<h2 class="font-semibold mt-0">Login</h2>
 			<form use:enhance method="post">
-				<label for="username"
-					>Username{#if $errors.username}
-						<small class="login-error-label">{$errors.username}</small>
-					{/if}</label
-				>
-				<input
-					name="username"
-					type="text"
-					placeholder="Username"
-					aria-label="Username"
-					bind:value={$form_data.username}
-					{...$constraints.username}
-					required
-				/>
-				<label for="password"
-					>Password {#if $errors.password}<small class="login-error-label">{$errors.password}</small
-						>{/if}</label
-				>
-				<input
-					name="password"
-					type="password"
-					placeholder="Password"
-					aria-label="Password"
-					bind:value={$form_data.password}
-					{...$constraints.password}
-					required
-				/>
+				<div class="form-control mb-4">
+					<label for="username" class="label">
+						<span class="label-text">Username</span>
+						{#if $errors.username}<span class="label-text-alt text-red-700">{$errors.username}</span
+							>{/if}
+					</label>
+					<input
+						required
+						name="username"
+						type="text"
+						placeholder="Username"
+						aria-label="Username"
+						class="input input-bordered"
+						bind:value={$form_data.username}
+						{...$constraints.username}
+					/>
+				</div>
 
-				<button type="submit">Login</button>
+				<div class="form-control mb-4">
+					<label for="password" class="label">
+						<span class="label-text">Username</span>
+						{#if $errors.password}<span class="label-text-alt text-red-700">{$errors.password}</span
+							>{/if}
+					</label>
+					<input
+						required
+						name="password"
+						type="password"
+						placeholder="Password"
+						aria-label="Password"
+						class="input input-bordered"
+						bind:value={$form_data.password}
+						{...$constraints.password}
+					/>
+				</div>
+
+				<button type="submit" class="w-full py-2 px-4 btn">Sign In</button>
 			</form>
 		</div>
-	</article>
-
-	{#if form?.apiError || message}
-		<article class="form-error-container">
-			<div>
+		{#if form?.apiError || message}
+			<div class="shadow p-8 alert-error mt-4 text-center">
 				{#if message}
 					<span class="form-error-message">{message}</span>
 				{:else if form?.apiError}
 					<span class="form-error-message">{form?.message}</span>
 				{/if}
 			</div>
-		</article>
-	{/if}
-</main>
+		{/if}
+	</div>
+</div>

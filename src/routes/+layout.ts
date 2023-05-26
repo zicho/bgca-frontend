@@ -5,6 +5,7 @@ import { handleLoginRedirect } from '$lib/util/handleLoginRedirect';
 
 export const load = (async (event) => {
 	if (event?.route?.id?.includes('(protected)') && !event.data.jwt) {
+		console.dir("poop")
 		throw redirect(302, handleLoginRedirect(event as unknown as RequestEvent));
 	} else if (event.data.jwt) {
 		const api = new ApiHelper(event.data.jwt as string);
