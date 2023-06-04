@@ -69,7 +69,7 @@
 		</div>
 	</div>
 
-	<div class="grow container p-4 md:px-16 md:py-8 prose max-w-none">
+	<div class="bg-base-200 grow container p-4 md:px-16 md:py-8 prose max-w-none">
 		<slot />
 	</div>
 

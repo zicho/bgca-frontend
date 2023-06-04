@@ -14,8 +14,9 @@ export type { CollectionUpdatedResponseViewModel } from './models/CollectionUpda
 export type { CreateGameDto } from './models/CreateGameDto';
 export type { CreateGameSessionDto } from './models/CreateGameSessionDto';
 export type { GameViewModel } from './models/GameViewModel';
-export type { GameViewModelListResponse } from './models/GameViewModelListResponse';
 export type { GameViewModelResponse } from './models/GameViewModelResponse';
+export type { GameViewModelSearchResult } from './models/GameViewModelSearchResult';
+export type { GameViewModelSearchResultResponse } from './models/GameViewModelSearchResultResponse';
 export { HttpStatusCode } from './models/HttpStatusCode';
 export type { Int32Response } from './models/Int32Response';
 export type { LoginUserDto } from './models/LoginUserDto';

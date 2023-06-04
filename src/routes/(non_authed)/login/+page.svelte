@@ -14,7 +14,7 @@
 
 <div class="flex flex-col items-center justify-center">
 	<div class="w-full md:w-1/2 xl:w-1/3">
-		<div class="shadow p-8">
+		<div class="shadow p-8 bg-base-100">
 			<h2 class="font-semibold mt-0">Login</h2>
 			<form use:enhance method="post">
 				<div class="form-control mb-4">
@@ -37,7 +37,7 @@
 
 				<div class="form-control mb-4">
 					<label for="password" class="label">
-						<span class="label-text">Username</span>
+						<span class="label-text">Password</span>
 						{#if $errors.password}<span class="label-text-alt text-red-700">{$errors.password}</span
 							>{/if}
 					</label>
@@ -58,7 +58,7 @@
 		</div>
 		{#if form?.apiError || message}
 			<div class="shadow p-8 alert-error mt-4 text-center">
-				{#if message}
+				{#if message && !form?.apiError}
 					<span class="form-error-message">{message}</span>
 				{:else if form?.apiError}
 					<span class="form-error-message">{form?.message}</span>

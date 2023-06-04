@@ -2,8 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateGameDto } from '../models/CreateGameDto';
-import type { GameViewModelListResponse } from '../models/GameViewModelListResponse';
 import type { GameViewModelResponse } from '../models/GameViewModelResponse';
+import type { GameViewModelSearchResultResponse } from '../models/GameViewModelSearchResultResponse';
 import type { Int32Response } from '../models/Int32Response';
 import type { UpdateGameDto } from '../models/UpdateGameDto';
 
@@ -18,14 +18,14 @@ export class GameService {
      * @param name 
      * @param page 
      * @param limit 
-     * @returns GameViewModelListResponse Success
+     * @returns GameViewModelSearchResultResponse Success
      * @throws ApiError
      */
     public getGames(
 name?: string,
 page: number = 1,
 limit: number = 10,
-): CancelablePromise<GameViewModelListResponse> {
+): CancelablePromise<GameViewModelSearchResultResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/Game',
