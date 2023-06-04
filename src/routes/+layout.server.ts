@@ -1,8 +1,8 @@
 import type { LayoutServerLoad } from './$types';
 
-export const load = (async ({ locals }) => {
+export const load = (async ({ locals, cookies, route }) => {
 	return {
-        jwt: locals.jwt,
-        username: locals.user?.username ?? null,
-    };
+		jwt: locals.jwt,
+		username: locals.user?.username ?? null
+	};
 }) satisfies LayoutServerLoad;

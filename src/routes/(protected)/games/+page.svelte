@@ -34,7 +34,6 @@
 								{game.name}
 							</h3>
 							<p class="truncate-lines-2 text-gray-600">{game.description}</p>
-							<!-- <button class="left-0 btn w-full absolute bottom-0">Buy Now</button> -->
 						</div>
 					</div>
 				</a>

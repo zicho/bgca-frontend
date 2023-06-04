@@ -9,6 +9,6 @@ export const load = (async ({ parent, url }) => {
 	var data = await api?.client.game.getGames(query ? query : undefined);
 
 	return {
-		games: data?.data as GameViewModel[]
+		games: data?.data?.paginatedResults as GameViewModel[]
 	};
 }) satisfies PageLoad;
