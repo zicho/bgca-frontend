@@ -1,7 +1,6 @@
 import type { PageLoad } from './$types';
 
 export const load = (async ({parent}) => {
-    
     const { api } = await parent();
 
     try {
