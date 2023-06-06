@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	$: ({ games } = data);
+	$: ({ games, page, numPages, totalCount, limit } = data);
 
 	let isLoading: boolean;
 
@@ -14,40 +14,46 @@
 	<TimeoutSearchForm queryParam="name" bind:isLoading />
 </div>
 
-{#if isLoading}
-	<div class="mb-8 flex items-center justify-center">
-		<i class="fa-solid fa-spinner fa-spin text-8xl" />
-	</div>
-{:else}
-	<div class="flex flex-wrap -mx-4">
-		{#each games as game}
-			<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
-				<a href="/games/{game.id}/{game.name?.toLocaleLowerCase()}">
-					<div class="bg-white rounded-lg shadow-lg flex flex-col h-full">
-						<img
-							class="my-0 aspect-square w-full max-h-72"
-							src={game.thumbnailUrl}
-							alt="{game.name} cover art"
-						/>
-						<div class="flex-grow p-4 relative">
-							<h3 class="text-lg font-semibold text-gray-800 mb-2 my-0 overflow-hidden">
-								{game.name}
-							</h3>
-							<p class="truncate-lines-2 text-gray-600">{game.description}</p>
-						</div>
+Page {page} of {numPages}
+
+<div class="flex join space-x-2 flex-grow justify-center mb-8">
+	<a href="/games?page={page - 1}">
+		<button disabled={page == 1} role="link" class="flex-grow sm:flex-grow-0 join-item btn btn-md"
+			>Previous</button
+		></a
+	>
+	<!-- <button class="flex-grow sm:flex-grow-0 join-item btn btn-md btn-active">2</button>
+	<button class="flex-grow sm:flex-grow-0 join-item btn btn-md">3</button> -->
+	<a href="/games?page={page + 1}">
+		<button disabled={page == numPages} class="flex-grow sm:flex-grow-0 join-item btn btn-md"
+			>Next</button
+		>
+	</a>
+</div>
+
+<div class="flex flex-wrap -mx-4">
+	{#each games as game}
+		<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8">
+			<a href="/games/{game.id}/{game.name?.toLocaleLowerCase()}">
+				<div class="bg-white rounded-lg shadow-lg flex flex-col h-full">
+					<img
+						class="my-0 aspect-square w-full max-h-72"
+						src={game.imageUrl}
+						alt="{game.name} cover art"
+					/>
+					<div class="flex-grow p-4 relative">
+						<h3 class="text-lg font-semibold text-gray-800 mb-2 my-0 overflow-hidden">
+							{game.name}
+						</h3>
+						<p class="truncate-lines-2 text-gray-600">
+							{game.description ? game.description : 'No description available'}
+						</p>
 					</div>
-				</a>
-			</div>
-		{/each}
-	</div>
-	<div class="flex join space-x-2 justify-center md:justify-start" >
-		<button class="flex-grow sm:flex-grow-0 join-item btn btn-md">1</button>
-		<button class="flex-grow sm:flex-grow-0 join-item btn btn-md btn-active">2</button>
-		<button class="flex-grow sm:flex-grow-0 join-item btn btn-md">3</button>
-		<button class="flex-grow sm:flex-grow-0 join-item btn btn-md">4</button>
-	  </div>
-	  
-{/if}
+				</div>
+			</a>
+		</div>
+	{/each}
+</div>
 
 <!-- 
 {#each games as game}
