@@ -9,7 +9,6 @@ export const load = (async ({parent}) => {
         console.dir(error)
     }
     
-
     return {
         users: data?.data
     };

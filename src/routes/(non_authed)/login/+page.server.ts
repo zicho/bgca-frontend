@@ -29,9 +29,6 @@ export const actions: import('./$types').Actions = {
 				}
 			} catch (error) {
 				let message = (error as ApiError)?.body?.message;
-
-				console.dir(message)
-
 				return {
 					message: message ? message : ErrorMessages.SERVICE_UNAVAILABLE,
 					form_data,

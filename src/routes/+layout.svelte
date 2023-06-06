@@ -83,14 +83,3 @@
 		</footer>
 	</div>
 </div>
-
-<!-- {#if data.jwt && path.length > 1}
-	<nav class="container-fluid" aria-label="breadcrumb">
-		<ul>
-			{#each path as p}
-				<li><a href={p.href}>{p.label}</a></li>
-			{/each}
-		</ul>
-	</nav>
-{/if}
-<hr class="m-0" /> -->
